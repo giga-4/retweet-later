@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon dist/server/build.js",
+    "lint": "prettier --write **/*.ts",
     "build": "run-p build:*",
     "build:client": "webpack --config webpack.client.config.js",
     "build:server": "webpack --config webpack.server.config.js",
