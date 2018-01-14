@@ -34,7 +34,11 @@ app.post('/bookings', function(req, res) {
 });
 
 app.get('/bookings', function(req, res) {
-  res.json({text: 'hoge'});
+  const query = 'SELECT * from bookings LIMIT 100;';
+  connection.query(query, function(error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
 });
 
 app.listen(3000, function () {
