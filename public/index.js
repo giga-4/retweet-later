@@ -5,8 +5,6 @@ $(function() {
         cache: false,
     })
     .done(function(res) {
-        debugger;
-        console.log(res);
         res.forEach(function(e) {
           var $tr = $('<tr>')
           $tr.append($('<td>').text(e.url))
@@ -14,6 +12,5 @@ $(function() {
           $tr.append($('<td>').text(e.status))
           $bookings.append($tr);
         });
-        debugger;
     })
 });
