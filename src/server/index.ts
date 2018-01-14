@@ -1,8 +1,8 @@
-const moment = require('moment');
-const express = require('express');
+import * as moment from 'moment'
+import * as express from 'express'
 const app = express();
-const bodyParser = require('body-parser');
-const mysql      = require('mysql');
+import * as bodyParser from 'body-parser'
+import * as mysql from 'mysql'
 const connection = mysql.createConnection({
   host     : 'db',
   user     : 'root',
@@ -16,6 +16,20 @@ const status = {
   'COMPLETE': 1,
 };
 Object.freeze(status);
+
+interface Booking {
+  id: number;
+  url: string;
+  scheduled_at: Date;
+  status: number;
+}
+interface BookingForClient {
+  id: number;
+  url: string;
+  scheduled_at: string;
+  status: string;
+}
+
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -34,13 +48,14 @@ app.post('/bookings', function(req, res) {
   });
 });
 
-const formatBooking = function(booking) {
-  const ret = {}
-  ret.id = booking.id
-  ret.url = booking.url
-  ret.scheduled_at = moment(booking.scheduled_at).format('YYYY/MM/DD HH:mm:SS')
+const formatBooking = function(booking: Booking): BookingForClient {
   const statusIdx = Object.values(status).indexOf(booking.status)
-  ret.status = Object.keys(status)[statusIdx]
+  const ret = {
+    id: booking.id,
+    url: booking.url,
+    scheduled_at: moment(booking.scheduled_at).format('YYYY/MM/DD HH:mm:SS'),
+    status: Object.keys(status)[statusIdx],
+  }
   return ret
 }
 
