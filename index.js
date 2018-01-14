@@ -21,7 +21,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/bookings', function(req, res) {
-  console.log(req.body);
   const query = 'INSERT INTO bookings SET ?';
   const options = {
     url: req.body.url,
