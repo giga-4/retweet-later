@@ -1,9 +1,9 @@
-var moment = require('moment');
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
+const moment = require('moment');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const mysql      = require('mysql');
+const connection = mysql.createConnection({
   host     : 'db',
   user     : 'root',
   password : 'password',
