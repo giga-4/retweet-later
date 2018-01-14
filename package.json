@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/hkdnet/retweet-later#readme",
   "dependencies": {
+    "aws-sdk": "^2.181.0",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "moment": "^2.20.1",
