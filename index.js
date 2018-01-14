@@ -1,3 +1,4 @@
+var moment = require('moment');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -33,11 +34,21 @@ app.post('/bookings', function(req, res) {
   });
 });
 
+const formatBooking = function(booking) {
+  const ret = {}
+  ret.id = booking.id
+  ret.url = booking.url
+  ret.scheduled_at = moment(booking.scheduled_at).format('YYYY/MM/DD HH:mm:SS')
+  const statusIdx = Object.values(status).indexOf(booking.status)
+  ret.status = Object.keys(status)[statusIdx]
+  return ret
+}
+
 app.get('/bookings', function(req, res) {
   const query = 'SELECT * from bookings LIMIT 100;';
   connection.query(query, function(error, results, fields) {
     if (error) throw error;
-    res.json(results);
+    res.json(results.map(formatBooking));
   });
 });
 
