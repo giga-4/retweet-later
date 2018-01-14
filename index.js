@@ -45,7 +45,7 @@ const formatBooking = function(booking) {
 }
 
 app.get('/bookings', function(req, res) {
-  const query = 'SELECT * from bookings LIMIT 100;';
+  const query = 'SELECT * FROM bookings ORDER BY `scheduled_at` ASC LIMIT 100;';
   connection.query(query, function(error, results, fields) {
     if (error) throw error;
     res.json(results.map(formatBooking));
