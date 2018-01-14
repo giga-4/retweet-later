@@ -8,6 +8,7 @@ var connection = mysql.createConnection({
   password : 'password',
   database : 'retweet_later'
 });
+connection.connect();
 const status = {
   'FAILED'  : -1,
   'WAITING' : 0,
@@ -21,7 +22,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/bookings', function(req, res) {
   console.log(req.body);
-  connection.connect();
   const query = 'INSERT INTO bookings SET ?';
   const options = {
     url: req.body.url,
@@ -31,7 +31,6 @@ app.post('/bookings', function(req, res) {
   connection.query(query, options, function (error, results, fields) {
     if (error) throw error;
     res.redirect('/success.html');
-    connection.end();
   });
 });
 
