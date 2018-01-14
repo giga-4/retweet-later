@@ -2,6 +2,7 @@ import * as moment from 'moment'
 import * as express from 'express'
 const app = express();
 import * as bodyParser from 'body-parser'
+import {Booking} from '../common/types'
 import * as mysql from 'mysql'
 const connection = mysql.createConnection({
   host     : 'db',
@@ -17,19 +18,12 @@ const status = {
 };
 Object.freeze(status);
 
-interface Booking {
+interface BookingRecord {
   id: number;
   url: string;
   scheduled_at: Date;
   status: number;
 }
-interface BookingForClient {
-  id: number;
-  url: string;
-  scheduled_at: string;
-  status: string;
-}
-
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -48,7 +42,7 @@ app.post('/bookings', function(req, res) {
   });
 });
 
-const formatBooking = function(booking: Booking): BookingForClient {
+const formatBooking = function(booking: BookingRecord): Booking {
   const statusIdx = Object.values(status).indexOf(booking.status)
   const ret = {
     id: booking.id,
