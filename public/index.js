@@ -1,4 +1,5 @@
 $(function() {
+    var $bookings = $('#bookings')
     $.get({
         url: '/bookings',
         cache: false,
@@ -11,7 +12,7 @@ $(function() {
           $tr.append($('<td>').text(e.url))
           $tr.append($('<td>').text(e.scheduled_at))
           $tr.append($('<td>').text(e.status))
-          $('#bookings').append($tr);
+          $bookings.append($tr);
         });
         debugger;
     })
