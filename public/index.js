@@ -8,9 +8,9 @@ $(function() {
         console.log(res);
         res.forEach(function(e) {
           var $tr = $('<tr>')
-          $tr.append($('<td>').text('url'))
-          $tr.append($('<td>').text('scheduled_at'))
-          $tr.append($('<td>').text('status'))
+          $tr.append($('<td>').text(e.url))
+          $tr.append($('<td>').text(e.scheduled_at))
+          $tr.append($('<td>').text(e.status))
           $('#bookings').append($tr);
         });
         debugger;
