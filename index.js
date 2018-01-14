@@ -19,7 +19,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/books', function(req, res) {
+app.post('/bookings', function(req, res) {
   console.log(req.body);
   connection.connect();
   const query = 'INSERT INTO bookings SET ?';
