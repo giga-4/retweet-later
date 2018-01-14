@@ -8,9 +8,9 @@ $(function() {
         console.log(res);
         $('#bookings').append(
             '<tr>' +
-                '<th>url</th>' +
-                '<th>scheduled_at</th>' +
-                '<th>status</th>' +
+                '<td>url</td>' +
+                '<td>scheduled_at</td>' +
+                '<td>status</td>' +
             '</tr>');
         debugger;
     })
