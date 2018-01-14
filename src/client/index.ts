@@ -1,10 +1,19 @@
+import * as $ from 'jquery'
+
+interface BookingForClient {
+  id: number;
+  url: string;
+  scheduled_at: string;
+  status: string;
+}
+
 $(function() {
     var $bookings = $('#bookings')
     $.get({
         url: '/bookings',
         cache: false,
     })
-    .done(function(res) {
+    .done(function(res: BookingForClient[]) {
         res.forEach(function(e) {
           var $tr = $('<tr>')
           $tr.append($('<td>').text(e.url))
