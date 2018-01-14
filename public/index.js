@@ -6,12 +6,11 @@ $(function() {
     .done(function(res) {
         debugger;
         console.log(res);
-        $('#bookings').append(
-            '<tr>' +
-                '<td>url</td>' +
-                '<td>scheduled_at</td>' +
-                '<td>status</td>' +
-            '</tr>');
+        var $tr = $('<tr>')
+        $tr.append($('<td>').text('url'))
+        $tr.append($('<td>').text('scheduled_at'))
+        $tr.append($('<td>').text('status'))
+        $('#bookings').append($tr);
         debugger;
     })
 });
