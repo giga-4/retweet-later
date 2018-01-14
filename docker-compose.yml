@@ -12,6 +12,8 @@ services:
       - npm
       - run
       - start
+    links:
+      - db
   db:
     image: mysql:5.6
     ports:
