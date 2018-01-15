@@ -23,10 +23,6 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.json'],
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true
-  },
   performance: {
     hints: false
   },
