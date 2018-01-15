@@ -44,13 +44,12 @@ app.post('/bookings', function(req, res) {
 
 const formatBooking = function(booking: BookingRecord): Booking {
   const statusIdx = Object.values(status).indexOf(booking.status)
-  const ret = {
+  return {
     id: booking.id,
     url: booking.url,
     scheduled_at: moment(booking.scheduled_at).format('YYYY/MM/DD HH:mm:SS'),
     status: Object.keys(status)[statusIdx],
   }
-  return ret
 }
 
 app.get('/bookings', function(req, res) {
