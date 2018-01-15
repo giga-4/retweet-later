@@ -43,15 +43,15 @@ app.post("/bookings", function(req, res) {
 });
 
 const formatBooking = function(booking: BookingRecord): Booking {
-  const statusIdx = Object.values(status).indexOf(booking.status);
-  const ret = {
+  const statusIdx = Object.values(status).indexOf(booking.status)
+  return {
     id: booking.id,
     url: booking.url,
-    scheduled_at: moment(booking.scheduled_at).format("YYYY/MM/DD HH:mm:SS"),
-    status: Object.keys(status)[statusIdx]
-  };
-  return ret;
-};
+    scheduled_at: moment(booking.scheduled_at).format('YYYY/MM/DD HH:mm:SS'),
+    status: Object.keys(status)[statusIdx],
+  }
+}
+
 
 app.get("/bookings", function(req, res) {
   const query = "SELECT * FROM bookings ORDER BY `scheduled_at` ASC LIMIT 100;";
