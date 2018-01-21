@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/hkdnet/retweet-later#readme",
   "dependencies": {
+    "@types/dotenv": "^4.0.2",
     "@types/express": "^4.11.0",
     "@types/jquery": "^3.2.18",
     "@types/mysql": "^2.15.2",

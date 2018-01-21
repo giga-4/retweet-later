@@ -1,5 +1,7 @@
 import * as moment from "moment";
 import * as express from "express";
+import * as dotenv from "dotenv";
+dotenv.config();
 const app = express();
 import * as bodyParser from "body-parser";
 import { Booking } from "../common/types";
