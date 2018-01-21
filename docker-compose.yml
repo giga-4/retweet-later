@@ -23,4 +23,21 @@ services:
     environment:
       MYSQL_DATABASE: retweet_later
       MYSQL_ROOT_PASSWORD: password
-
+  watch_server:
+    image: node:alpine
+    working_dir: /app
+    volumes:
+      - '.:/app'
+    command:
+      - npm
+      - run
+      - watch:server
+  watch_client:
+    image: node:alpine
+    working_dir: /app
+    volumes:
+      - '.:/app'
+    command:
+      - npm
+      - run
+      - watch:client
